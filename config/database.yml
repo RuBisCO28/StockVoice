@@ -14,8 +14,8 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  host: localhost
+  password: <%= ENV['MYSQL_LOCAL_PASSWORD'] %>
+  host: db
 
 development:
   <<: *default
@@ -50,6 +50,10 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV["MYAPP_DATABASE_PASSWORD"] %>
+  adapter: mysql2
+  database: <%= ENV['MYSQL_DB'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  ssl_mode: :verify_identity
+  sslca: "/etc/ssl/cert.pem"
