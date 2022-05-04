@@ -1,0 +1,81 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  DisplayCopNames: true
+  TargetRubyVersion: 3.1
+  Exclude:
+    - '.git/**'
+    - 'bin/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'script/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+# Layout
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/HashAlignment:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 120
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+# Lint
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+# Metrics
+Metrics/ClassLength:
+  CountComments: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  CountComments: false
+
+# Rails
+Rails/RakeEnvironment:
+  Enabled: false
+
+# Style
+# Allow to put Japanese comment 
+Style/AsciiComments:
+  Enabled: false
+
+# Allow to define ModuleName::ClassName
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Not necessary to put comments in Class
+Style/Documentation:
+  Enabled: false
+
+# Ignore immutable declaration of string literal
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
