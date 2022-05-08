@@ -29,3 +29,6 @@
 /config/master.key
 .env
 db/csv/companies.csv
+db/csv/cashflows.csv
+db/csv/profit_losses.csv
+db/csv/stocks.csv

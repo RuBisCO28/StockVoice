@@ -26,3 +26,33 @@ CSV.foreach('db/csv/companies.csv', headers: true).each_slice(50) do |rows|
   Company.insert_all companies
 end
 
+CSV.foreach('db/csv/profit_losses.csv', headers: true).each_slice(50) do |rows|
+  profit_losses = []
+  rows.each do |row|
+    profit_losses << {
+      ticker: row['ticker'].to_s,
+      fiscal_period: row['fiscal_period'].to_s,
+      net_sales: row['net_sales'].to_s,
+      net_operating_profit: row['net_operating_profit'].to_s,
+      ordinary_profit: row['ordinary_profit'].to_s,
+      net_profit: row['net_profit'].to_s,
+      roe: row['roe'].to_s
+    }
+  end
+  ProfitLoss.insert_all profit_losses
+end
+
+CSV.foreach('db/csv/cashflows.csv', headers: true).each_slice(50) do |rows|
+  cashflows = []
+  rows.each do |row|
+    cashflows << {
+      ticker: row['ticker'].to_s,
+      fiscal_period: row['fiscal_period'].to_s,
+      cfo: row['cfo'].to_s,
+      cfi: row['cfi'].to_s,
+      cff: row['cff'].to_s
+    }
+  end
+  Cashflow.insert_all cashflows
+end
+
