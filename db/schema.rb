@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_082132) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_105506) do
   create_table "cashflows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "ticker", null: false
     t.string "fiscal_period", null: false
@@ -45,6 +45,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_082132) do
     t.string "japanese", null: false
     t.string "english", null: false
     t.string "country", null: false
+  end
+
+  create_table "stocks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ticker", null: false
+    t.string "trade_date", null: false
+    t.integer "open", null: false
+    t.integer "high", null: false
+    t.integer "low", null: false
+    t.integer "close", null: false
+    t.integer "volume", null: false
   end
 
 end

@@ -8,7 +8,7 @@ CSV.foreach('db/csv/sectors.csv', headers: true) do |row|
   )
 end
 
-CSV.foreach('db/csv/companies.csv', headers: true).each_slice(50) do |rows|
+CSV.foreach('db/csv/companies.csv', headers: true).each_slice(1000) do |rows|
   companies = []
   rows.each do |row|
     companies << {
@@ -26,7 +26,7 @@ CSV.foreach('db/csv/companies.csv', headers: true).each_slice(50) do |rows|
   Company.insert_all companies
 end
 
-CSV.foreach('db/csv/profit_losses.csv', headers: true).each_slice(50) do |rows|
+CSV.foreach('db/csv/profit_losses.csv', headers: true).each_slice(1000) do |rows|
   profit_losses = []
   rows.each do |row|
     profit_losses << {
@@ -42,7 +42,7 @@ CSV.foreach('db/csv/profit_losses.csv', headers: true).each_slice(50) do |rows|
   ProfitLoss.insert_all profit_losses
 end
 
-CSV.foreach('db/csv/cashflows.csv', headers: true).each_slice(50) do |rows|
+CSV.foreach('db/csv/cashflows.csv', headers: true).each_slice(1000) do |rows|
   cashflows = []
   rows.each do |row|
     cashflows << {
@@ -54,5 +54,21 @@ CSV.foreach('db/csv/cashflows.csv', headers: true).each_slice(50) do |rows|
     }
   end
   Cashflow.insert_all cashflows
+end
+
+CSV.foreach('db/csv/stocks.csv', headers: true).each_slice(10000) do |rows|
+  stocks = []
+  rows.each do |row|
+    stocks << {
+      ticker: row['ticker'].to_s,
+      trade_date: row['trade_date'].to_s,
+      open: row['open'].to_i,
+      high: row['high'].to_i,
+      low: row['low'].to_i,
+      close: row['close'].to_i,
+      volume: row['volume'].to_i
+    }
+  end
+  Stock.insert_all stocks
 end
 
